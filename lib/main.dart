@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_class_ias/splash_screen.dart';
 
 import 'child_tree.dart';
+import 'get_started.dart';
 
 
 void main() {
@@ -9,7 +10,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: GetStarted(),
       // home: WidgetTree(),
     )
   );
