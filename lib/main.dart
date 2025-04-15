@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_ias/splash_screen.dart';
 
 import 'child_tree.dart';
 
@@ -7,7 +8,8 @@ void main() {
   print("Main function call");
   runApp(
     MaterialApp(
-      home: MyApp(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
       // home: WidgetTree(),
     )
   );
