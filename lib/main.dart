@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'child_tree.dart';
+
+
 void main() {
   print("Main function call");
   runApp(
-    MyApp()
+    MaterialApp(
+      home: MyApp(),
+      // home: WidgetTree(),
+    )
   );
   
 }
@@ -13,9 +19,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     print("My app widget rebuild");
-    return
-      MaterialApp(
-          home:Scaffold(
+    return Scaffold(
             drawer: Drawer(
               child: ListView(
                 children: [
@@ -67,7 +71,6 @@ class MyApp extends StatelessWidget{
                 ],
               ),
             ),
-          )
-      );
+          );
   }
 }
