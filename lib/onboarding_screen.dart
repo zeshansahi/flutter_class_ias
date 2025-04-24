@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_class_ias/signin_screen.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -46,12 +47,21 @@ class _OnBoardingState extends State<OnBoarding> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "1/3",
+                    "${currentIndex+1}/3",
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "Skip",
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignIn()),
+                      );
+                    },
+                    child: Text(
+                      "Skip",
+                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               ),
@@ -123,7 +133,13 @@ class _OnBoardingState extends State<OnBoarding> {
                         setState(() {
                           currentIndex++;
                         })
-                      }
+                      }else{
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignIn()),
+                      )
+                    }
                   },
                   child: Text("Next",
                       style: TextStyle(
