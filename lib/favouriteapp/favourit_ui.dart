@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 
 class FavouritAppScreen extends StatefulWidget {
   @override
@@ -11,39 +11,41 @@ class _FavouritAppScreenState extends State<FavouritAppScreen> {
   List<int> favouriteList = [];
   List<int> listItem = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  // Future<void> listApiCall() async {
-  //
-  //   var request = http.Request('GET',
-  //       Uri.parse('https://jsonplaceholder.typicode.com/posts'));
-  //
-  //
-  //   print("Request:$request");
-  //   http.StreamedResponse response = await request.send();
-  //   print("response:" +
-  //       response.statusCode.toString() +
-  //       "statuscode detaal ${response.stream}");
-  //   if (response.statusCode == 200) {
-  //     try {
-  //       var data = await response.stream.bytesToString();
-  //       print("ResponseData: $data");
-  //     } catch (e,ex) {
-  //       print("ReportJasonParsingError:$e");
-  //       print("ReportJasonParsingError:$ex");
-  //     }
-  //
-  //     // print(await response.stream.bytesToString());
-  //   } else if (response.statusCode == 401) {
-  //     print("Session expired");
-  //   } else {
-  //     print(response.reasonPhrase);
-  //   }
-  // }
+
+  Future<void> listApiCall() async {
+
+    var request = http.Request('GET',
+        Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+    http.StreamedResponse response = await request.send();
+
+    var data = await response.stream.bytesToString();
+
+    print("Request::${request}");
+    print("ResponseCode::${response.statusCode}");
+    print("ResponseData::${data}");
+
+    if (response.statusCode == 200) {
+      try {
+        print("Api Called successfully");
+
+
+      } catch (e,ex) {
+        print("ReportJasonParsingError:$ex");
+      }
+
+      // print(await response.stream.bytesToString());
+    } else if (response.statusCode == 401) {
+      print("Session expired");
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // listApiCall();
+    listApiCall();
   }
 
   @override
