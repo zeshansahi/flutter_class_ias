@@ -6,6 +6,7 @@ import 'package:flutter_class_ias/statemangment/slider_example.dart';
 import 'package:provider/provider.dart';
 
 import 'child_tree.dart';
+import 'favouriteapp/favourit_ui.dart';
 import 'get_started.dart';
 import 'statemangment/counter_example.dart';
 
@@ -26,7 +27,7 @@ class MyAppStateFull extends StatelessWidget {
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SliderExample(),
+      home: FavouritAppScreen(),
       // home: WidgetTree(),
     ) ,);
 
