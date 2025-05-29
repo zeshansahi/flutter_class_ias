@@ -1,5 +1,3 @@
-
-
 class UserModel {
   UserModel({
     required this.userId,
@@ -13,7 +11,7 @@ class UserModel {
   final String? title;
   final String? body;
 
-  factory UserModel.fromJson(Map<String, dynamic> json){
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       userId: json["userId"],
       id: json["id"],
@@ -29,4 +27,8 @@ class UserModel {
     "body": body,
   };
 
+  @override
+  String toString() {
+    return 'UserModel{userId: $userId, id: $id, title: $title, body: $body}';
+  }
 }

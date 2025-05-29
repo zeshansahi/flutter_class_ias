@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class_ias/favouriteapp/favout_provider.dart';
 import 'package:flutter_class_ias/splash_screen.dart';
 import 'package:flutter_class_ias/statemangment/providers/counter_provider.dart';
 import 'package:flutter_class_ias/statemangment/providers/slider_provider.dart';
@@ -24,6 +25,7 @@ class MyAppStateFull extends StatelessWidget {
       providers: [
       ChangeNotifierProvider(create: (_)=>CounterProvider()),
       ChangeNotifierProvider(create: (_)=>SliderProvider()),
+      ChangeNotifierProvider(create: (_)=>FavouritProvider()),
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
