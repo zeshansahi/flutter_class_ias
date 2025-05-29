@@ -25,7 +25,7 @@ class MyAppStateFull extends StatelessWidget {
       providers: [
       ChangeNotifierProvider(create: (_)=>CounterProvider()),
       ChangeNotifierProvider(create: (_)=>SliderProvider()),
-      ChangeNotifierProvider(create: (_)=>FavouritProvider()),
+      ChangeNotifierProvider(create: (_)=>FavouriteProvider()),
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,

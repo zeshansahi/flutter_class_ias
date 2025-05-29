@@ -9,16 +9,13 @@ class FavouritAppScreen extends StatefulWidget {
 }
 
 class _FavouritAppScreenState extends State<FavouritAppScreen> {
-  List<int> favouriteList = [];
-  List<int> listItem = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    FavouritProvider provider=Provider.of<FavouritProvider>(context,listen: false);
+    FavouriteProvider provider=Provider.of<FavouriteProvider>(context,listen: false);
     provider.listApiCall();
   }
 
@@ -26,7 +23,7 @@ class _FavouritAppScreenState extends State<FavouritAppScreen> {
   Widget build(BuildContext context) {
 
     // TODO: implement build
-    return  Consumer<FavouritProvider>(builder: (context,provider,chiled){
+    return  Consumer<FavouriteProvider>(builder: (context,provider,chiled){
       return Scaffold(
         backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
@@ -51,7 +48,7 @@ class _FavouritAppScreenState extends State<FavouritAppScreen> {
         ),
         body: ListView.builder(
             itemCount: provider.userList?.length,
-            itemBuilder: (context, item) {
+            itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(top: 1.0),
                 child: Container(
@@ -64,25 +61,25 @@ class _FavouritAppScreenState extends State<FavouritAppScreen> {
                       ),
                       child: ListTile(
                         leading: Text(
-                          " ${provider.userList?[item].userId}",
+                          " ${provider.userList[index].userId}",
                           style: TextStyle(),
                         ),
-                        title: Text(provider.userList?[item].title??""),
+                        title: Text(provider.userList[index].title??""),
                         trailing: InkWell(
                             onTap: () => {
-                              // if (favouriteList.contains(listItem[item]))
-                              //   {
-                              //     favouriteList.remove(listItem[item]),
-                              //   }
-                              // else
-                              //   {
-                              //     favouriteList.add(listItem[item]),
-                              //   },
-                              // print("$item"),
-                              // print("Size::${favouriteList.length}"),
+                              if (provider.favouriteList.contains(provider.userList[index]))
+                                {
+                                 provider.removeFavourite(provider.userList[index]),
+                                }
+                              else
+                                {
+                                  provider.addFavourite(provider.userList[index]),
+                                },
+                              print("$index"),
+
                               // setState(() {})
                             },
-                            child: Icon(favouriteList.contains(provider.userList?[item] )
+                            child: Icon(provider.favouriteList.contains(provider.userList?[index] )
                                 ? Icons.favorite
                                 : Icons.favorite_border_outlined)),
                       ),

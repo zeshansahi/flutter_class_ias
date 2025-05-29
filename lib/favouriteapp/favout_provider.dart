@@ -3,8 +3,21 @@ import 'package:flutter_class_ias/favouriteapp/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class FavouritProvider extends ChangeNotifier {
+class FavouriteProvider extends ChangeNotifier {
   List<UserModel> userList = []; // Initialize as empty list instead of nullable
+  List<UserModel> favouriteList = []; // Initialize as empty list instead of nullable
+
+
+  void addFavourite(UserModel model)   {
+    favouriteList.add(model);
+    notifyListeners();
+  }
+  void removeFavourite(UserModel model)   {
+    favouriteList.add(model);
+    notifyListeners();
+  }
+
+
 
   Future<void> listApiCall() async {
     try {
@@ -30,9 +43,7 @@ class FavouritProvider extends ChangeNotifier {
           userList = []; // Clear list on error
           notifyListeners();
         }
-      } else if (response.statusCode == 401) {
-        print("Session expired");
-      } else {
+      }  else {
         print("Error: ${response.reasonPhrase}");
       }
     } catch (e) {
@@ -42,7 +53,8 @@ class FavouritProvider extends ChangeNotifier {
 
   List<UserModel> parseUsers(String jsonString) {
     final List<dynamic> jsonList = json.decode(jsonString);
-    return jsonList.map((json) => UserModel.fromJson(json)).toList();
+    List<UserModel> list= jsonList.map((json) => UserModel.fromJson(json)).toList();
+    return list;
   }
 
   Future<void> addUserPostApiCall({userId, id, title, textBody}) async {
